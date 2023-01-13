@@ -14,7 +14,7 @@ export default{
     return{
       store,
       APIUrlFilm: 'https://api.themoviedb.org/3/search/movie',
-      
+      APIUrlTv: 'https://api.themoviedb.org/3/search/tv',
     }
   },
   methods:{
@@ -31,6 +31,20 @@ export default{
           store.filmList = response.data.results
         })
 
+    },
+    getTv(serchText) {
+      axios.get(this.APIUrlTv, {
+        params: {
+          api_key: '7192f8da7811ab852ce08d351e509894',
+          query: serchText,
+        }
+      })
+        .then((response) => {
+          console.log(response.data.results);
+
+          store.tvList = response.data.results
+        })
+
     }
 
     
@@ -45,7 +59,7 @@ export default{
 </script>
 
 <template>
- <AppHeader @serchNameFilm="getFilm(store.serchText)"/>
+ <AppHeader @serchNameFilm="getFilm" @serchNameTv="getTv" />
  <AppMain/>
 </template>
 

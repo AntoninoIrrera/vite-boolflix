@@ -24,7 +24,7 @@
     
     <div>
         <h4>
-            {{ titoloFilm }} / {{ titoloOriginaleFilm }} / {{ linguaFilm }} <img  :src= "urlImg + linguaFilm + '.png'"  :alt= linguaFilm> / {{ votoFilm }}
+            {{ titoloFilm }} / {{ titoloOriginaleFilm }} / {{ linguaFilm }} <img  :src= "urlImg + linguaFilm + '.png'"  :alt= "'Bandiera ' + linguaFilm"> / {{ votoFilm }}
         </h4>
     </div>
 

@@ -5,6 +5,7 @@ export default{
     data(){
         return{
             store,
+            serchText: '',
         }
     }
 }
@@ -15,8 +16,8 @@ export default{
     
     <header>
         <label for="serchName">Cerca</label>
-        <input type="text" name="serchName" id="serchName" v-model="store.serchText">
-        <a href="#" @click="$emit('serchNameFilm')">Invio</a>
+        <input type="text" name="serchName" id="serchName" v-model="serchText">
+        <a href="#" @click="$emit('serchNameFilm',serchText), $emit('serchNameTv',serchText)">Invio</a>
     </header>
 
 
