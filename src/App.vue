@@ -13,12 +13,13 @@ export default{
   data(){
     return{
       store,
-      APIUrl: 'https://api.themoviedb.org/3/search/movie',
+      APIUrlFilm: 'https://api.themoviedb.org/3/search/movie',
+      
     }
   },
   methods:{
     getFilm(serchText) {
-      axios.get(this.APIUrl, {
+      axios.get(this.APIUrlFilm, {
         params: {
           api_key: '7192f8da7811ab852ce08d351e509894',
           query: serchText,
@@ -31,6 +32,7 @@ export default{
         })
 
     }
+
     
 
   },

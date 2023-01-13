@@ -7,6 +7,7 @@
         data() {
             return {
                 store,
+                urlImg: 'https://flagcdn.com/96x72/',
             }
         },
         props:{
@@ -23,7 +24,7 @@
     
     <div>
         <h4>
-            {{ titoloFilm }} / {{ titoloOriginaleFilm }} / {{ linguaFilm }} / {{ votoFilm }}
+            {{ titoloFilm }} / {{ titoloOriginaleFilm }} / {{ linguaFilm }} <img  :src= "urlImg + linguaFilm + '.png'"  :alt= linguaFilm> / {{ votoFilm }}
         </h4>
     </div>
 
