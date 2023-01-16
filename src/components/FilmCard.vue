@@ -80,7 +80,10 @@
                 <font-awesome-icon :icon="getRating(votoFilm) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
             <p :class="overviewFilm == `` ? `dNone` : ``">Overview: {{ overviewFilm.substring(0,50) }}...</p>
-            <p>Genere: <span v-for="genere in arrayGeneri"> {{ genere }}</span></p>
+            <ul>
+                <li>Genere:</li>
+                <li v-for="genere in arrayGeneri">{{ genere }}</li>
+            </ul>
         </div>
     </div>
 
@@ -88,6 +91,20 @@
 
 
 <style scoped>
+ul{
+    color: white;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+li{
+    margin: 0.25rem;
+}
+
 span{
     margin: 0.25rem;
 }
