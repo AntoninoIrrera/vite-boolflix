@@ -50,7 +50,7 @@
                 <font-awesome-icon :icon="getRating(votoFilm) > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
                 <font-awesome-icon :icon="getRating(votoFilm) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
-            <p>Overview: {{ overviewFilm.substring(0,550) }}...</p>
+            <p>Overview: {{ overviewFilm.substring(0,250) }}...</p>
         </div>
     </div>
 

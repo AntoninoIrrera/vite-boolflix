@@ -48,7 +48,7 @@ export default {
                 <font-awesome-icon :icon="getRating(votoTv) > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
                 <font-awesome-icon :icon="getRating(votoTv) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
-            <p>Overview: {{ overviewTv }}</p>
+            <p>Overview: {{ overviewTv.substring(0, 250)}} ...</p>
         </div>
     </div>
 
