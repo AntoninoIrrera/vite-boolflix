@@ -18,7 +18,8 @@ export default{
     
     <header>
         <section>
-            <input type="text" name="serchName" id="serchName" v-model="serchText" placeholder="Cerca" @keyup="$emit('serchNameFilm',serchText), $emit('serchNameTv',serchText)">
+            <input type="text" name="serchName" id="serchName" v-model="serchText" placeholder="Cerca" @keyup.enter="$emit('serchNameFilm',serchText), $emit('serchNameTv',serchText)">
+            <a href="#" class="bottone" @click="$emit('serchNameFilm',serchText), $emit('serchNameTv',serchText)">Cerca</a>
         </section>
     </header>
     
@@ -26,8 +27,17 @@ export default{
 </template>
 
 <style scoped>
+a{
+    text-decoration: none;
+    color: white;
+    margin-left: 2rem;
+}
 
-@import url(../../node_modules/bootstrap);
+.bottone{
+    border: 2px solid red;
+    padding: 0.25rem 1rem;
+    background-color: red;
+}
 
 
 section{
