@@ -41,7 +41,7 @@
         
         <div class="info" :class="overIndex == 1 ? `sfondoNero dBlock` : `dNone`">
             <p>Titolo: {{ titoloFilm }}</p>
-            <p>Titolo originale: {{ titoloOriginaleFilm }}</p>
+            <p :class="titoloFilm == titoloOriginaleFilm ? `dNone` : ``">Titolo originale: {{ titoloOriginaleFilm }}</p>
             <p>Lingua:<img class="bandiera" :src="urlImg + linguaFilm + '.png'" :alt="'Bandiera ' + linguaFilm"></p>
             <p>Voto:
                 <font-awesome-icon :icon="getRating(votoFilm) > 0 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
@@ -72,7 +72,7 @@
 }
 
 p{
-    margin: 0;
+    margin: 0.25rem;
     color: white;
 }
 

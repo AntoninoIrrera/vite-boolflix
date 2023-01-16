@@ -39,7 +39,7 @@ export default {
         <img :src="urlCopertina + urlDimensioneCopertina + urlCopertinaTv" :alt="titoloTv">
         <div class="info" :class="overIndex == 1 ? `sfondoNero dBlock` : `dNone`">
             <p>Titolo: {{ titoloTv }}</p>
-            <p>Titolo originale: {{ titoloOriginaleTv }} </p>
+            <p :class="titoloTv == titoloOriginaleTv ? `dNone` : ``">Titolo originale: {{ titoloOriginaleTv }} </p>
             <p>Lingua: <img class="bandiera" :src="urlImg + linguaTv + '.png'" :alt="'Bandiera ' + linguaTv"> </p>
             <p>Voto:
                 <font-awesome-icon :icon="getRating(votoTv) > 0 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
@@ -69,7 +69,7 @@ export default {
 }
 
 p{
-    margin: 0;
+    margin: 0.25rem;
     color: white;
 }
 

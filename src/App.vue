@@ -64,9 +64,8 @@ export default{
 </template>
 
 <style>
-
 body{
   margin: 0;
+  background-color: gray;
 }
-
 </style>
