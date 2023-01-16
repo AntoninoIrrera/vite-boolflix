@@ -11,7 +11,7 @@ export default {
             urlCopertina: 'https://image.tmdb.org/t/p/',
             urlDimensioneCopertina: 'w342',
             overIndex: 0,
-            arrayGeneri: [],
+            arrayGeneriTv: [],
         }
     },
     props: {
@@ -48,7 +48,7 @@ export default {
 
                 const idTv = (element) => element == id;
 
-                this.arrayGeneri.push(store.genresTvList[arrayId.findIndex(idTv)].name)
+                this.arrayGeneriTv.push(store.genresTvList[arrayId.findIndex(idTv)].name)
 
             }
 
@@ -80,7 +80,10 @@ export default {
                 <font-awesome-icon :icon="getRating(votoTv) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
             <p :class="overviewTv == `` ? `dNone` : ``">Overview: {{ overviewTv.substring(0, 50)}} ...</p>
-            <p>Genere: <span v-for="genere in arrayGeneri"> {{ genere }}</span></p>
+            <ul>
+                <li>Genere:</li>
+                <li v-for="genere in arrayGeneriTv">{{ genere }}</li>
+            </ul>
         </div>
     </div>
 
@@ -89,7 +92,17 @@ export default {
 
 
 <style scoped>
-span{
+ul {
+    color: white;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+li {
     margin: 0.25rem;
 }
 .sfondoNero {

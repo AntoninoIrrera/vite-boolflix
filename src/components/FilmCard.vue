@@ -11,7 +11,7 @@
                 urlDimensioneCopertina: 'w342',
                 urlImg: 'https://flagcdn.com/96x72/',
                 overIndex: 0,
-                arrayGeneri: [],
+                arrayGeneriFilm: [],
             }
         },
         props:{
@@ -48,7 +48,7 @@
                    
                    const idFIlm = (element) => element == id;
                    
-                   this.arrayGeneri.push(store.genresFilmList[arrayId.findIndex(idFIlm)].name)
+                   this.arrayGeneriFilm.push(store.genresFilmList[arrayId.findIndex(idFIlm)].name)
                    
                 }
 
@@ -82,7 +82,7 @@
             <p :class="overviewFilm == `` ? `dNone` : ``">Overview: {{ overviewFilm.substring(0,50) }}...</p>
             <ul>
                 <li>Genere:</li>
-                <li v-for="genere in arrayGeneri">{{ genere }}</li>
+                <li v-for="genere in arrayGeneriFilm">{{ genere }}</li>
             </ul>
         </div>
     </div>
@@ -105,9 +105,6 @@ li{
     margin: 0.25rem;
 }
 
-span{
-    margin: 0.25rem;
-}
 .sfondoNero{
     background-color: black;
 }
