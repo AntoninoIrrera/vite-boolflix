@@ -20,6 +20,7 @@
             votoFilm: Number,
             urlCopertinaFilm: String,
             overviewFilm: String,
+            genresIdFilm: Array,
         },
         methods:{
             getRating(voto){
@@ -36,7 +37,7 @@
 
 <template>
     
-    <div class="copertina" :class="urlCopertinaFilm == null ? `dNone` : ``" @mouseover="this.overIndex = 1" @mouseleave="this.overIndex = 0">
+    <div class="copertina" :class="urlCopertinaFilm == null ? `dNone` : ``, genresIdFilm.includes(store.genresSelect) ? `` : store.genresSelect == 0 ? `` : `dNone` " @mouseover="this.overIndex = 1" @mouseleave="this.overIndex = 0">
         <img :src="urlCopertina + urlDimensioneCopertina + urlCopertinaFilm" :alt=titoloFilm>
         
         <div class="info" :class="overIndex == 1 ? `sfondoNero dBlock` : `dNone`">

@@ -20,6 +20,7 @@ export default {
         votoTv: Number,
         urlCopertinaTv: String,
         overviewTv: String,
+        genresIdTv: Array,
     },
     methods: {
         getRating(voto) {
@@ -35,7 +36,7 @@ export default {
 
 <template>
 
-    <div class="copertina" :class="urlCopertinaTv == null ? `dNone` : ``" @mouseover="this.overIndex = 1" @mouseleave="this.overIndex = 0">
+    <div class="copertina" :class="urlCopertinaTv == null ? `dNone` : ``, genresIdTv.includes(store.genresSelect) ? `` : store.genresSelect == 0 ? `` : `dNone`" @mouseover="this.overIndex = 1" @mouseleave="this.overIndex = 0">
         <img :src="urlCopertina + urlDimensioneCopertina + urlCopertinaTv" :alt="titoloTv">
         <div class="info" :class="overIndex == 1 ? `sfondoNero dBlock` : `dNone`">
             <p>Titolo: {{ titoloTv }}</p>

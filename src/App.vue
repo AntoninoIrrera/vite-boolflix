@@ -15,6 +15,9 @@ export default{
       store,
       APIUrlFilm: 'https://api.themoviedb.org/3/search/movie',
       APIUrlTv: 'https://api.themoviedb.org/3/search/tv',
+      APIUrlGeneriFilm: 'https://api.themoviedb.org/3/genre/movie/list',
+      APIUrlGeneriTv: 'https://api.themoviedb.org/3/genre/tv/list',
+
     }
   },
   methods:{
@@ -45,13 +48,40 @@ export default{
           store.tvList = response.data.results
         })
 
+    },
+    getGenresFilm(){
+      axios.get(this.APIUrlGeneriFilm, {
+        params: {
+          api_key: '7192f8da7811ab852ce08d351e509894',
+        }
+      })
+      .then((response) => {
+        console.log(response.data.genres);
+
+        store.genresFilmList = response.data.genres
+      })
+
+    },
+    getGenrestv() {
+      axios.get(this.APIUrlGeneriTv, {
+        params: {
+          api_key: '7192f8da7811ab852ce08d351e509894',
+        }
+      })
+        .then((response) => {
+          console.log(response.data.genres);
+
+          store.genresTvList = response.data.genres
+        })
+
     }
 
     
 
   },
   created() {
-    // this.getFilm();
+    this.getGenresFilm();
+    this.getGenrestv();
   }
 }
 
