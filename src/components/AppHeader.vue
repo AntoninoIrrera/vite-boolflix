@@ -1,6 +1,8 @@
 <script>
 import {store} from '../store'
 
+
+
 export default{
     data(){
         return{
@@ -15,14 +17,23 @@ export default{
 <template>
     
     <header>
-        <label for="serchName">Cerca</label>
-        <input type="text" name="serchName" id="serchName" v-model="serchText">
-        <a href="#" @click="$emit('serchNameFilm',serchText), $emit('serchNameTv',serchText)">Invio</a>
+        <section>
+            <input type="text" name="serchName" id="serchName" v-model="serchText" placeholder="Cerca" @keyup="$emit('serchNameFilm',serchText), $emit('serchNameTv',serchText)">
+        </section>
     </header>
-
-
+    
+    
 </template>
 
 <style scoped>
+
+@import url(../../node_modules/bootstrap);
+
+
+section{
+    background-color: black;
+    padding: 2.5rem;
+    text-align: end;
+}
 
 </style>
