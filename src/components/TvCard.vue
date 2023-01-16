@@ -33,9 +33,9 @@ export default {
 
 <template>
 
-    <div>
+    <div class="copertina">
         <img :src="urlCopertina + urlDimensioneCopertina + urlCopertinaTv" :alt="titoloTv">
-        <h4>
+        <!-- <h4>
             {{ titoloTv }} / {{ titoloOriginaleTv }} / {{ linguaTv }} <img :src="urlImg + linguaTv + '.png'" :alt="'Bandiera ' + linguaTv"> / {{ getRating(votoTv) }}
             <font-awesome-icon :icon="getRating(votoTv) > 0 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             <font-awesome-icon :icon="getRating(votoTv) > 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
@@ -43,11 +43,18 @@ export default {
             <font-awesome-icon :icon="getRating(votoTv) > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             <font-awesome-icon :icon="getRating(votoTv) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
                       
-        </h4>
+        </h4> -->
     </div>
 
 </template>
 
 <style scoped>
+.copertina {
+        width: calc(100% / 7 - 1rem);
+        padding: 0.5rem;
+    }
 
+    img {
+      width: 100%;
+    }
 </style>
