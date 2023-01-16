@@ -11,6 +11,7 @@ export default {
             urlCopertina: 'https://image.tmdb.org/t/p/',
             urlDimensioneCopertina: 'w342',
             overIndex: 0,
+            arrayGeneri: [],
         }
     },
     props: {
@@ -28,8 +29,37 @@ export default {
             const numeroStelle = Math.ceil(voto / 2);
 
             return numeroStelle;
+        },
+        getGenres() {
+            const arrayId = [];
+
+
+
+            store.genresTvList.forEach(element => {
+
+                arrayId.push(element.id)
+
+            });
+
+            for (let index = 0; index < this.genresIdTv.length; index++) {
+
+
+                const id = this.genresIdTv[index]
+
+                const idTv = (element) => element == id;
+
+                this.arrayGeneri.push(store.genresTvList[arrayId.findIndex(idTv)].name)
+
+            }
+
+
         }
+
+    },
+    created() {
+        this.getGenres();
     }
+    
 }
 
 </script>
@@ -49,14 +79,19 @@ export default {
                 <font-awesome-icon :icon="getRating(votoTv) > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
                 <font-awesome-icon :icon="getRating(votoTv) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
-            <p :class="overviewTv == `` ? `dNone` : ``">Overview: {{ overviewTv.substring(0, 250)}} ...</p>
+            <p :class="overviewTv == `` ? `dNone` : ``">Overview: {{ overviewTv.substring(0, 50)}} ...</p>
+            <p>Genere: <span v-for="genere in arrayGeneri"> {{ genere }}</span></p>
         </div>
     </div>
 
 </template>
 
 
+
 <style scoped>
+span{
+    margin: 0.25rem;
+}
 .sfondoNero {
     background-color: black;
 }

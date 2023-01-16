@@ -11,6 +11,7 @@
                 urlDimensioneCopertina: 'w342',
                 urlImg: 'https://flagcdn.com/96x72/',
                 overIndex: 0,
+                arrayGeneri: [],
             }
         },
         props:{
@@ -29,7 +30,34 @@
                 
                 return numeroStelle;
             },
+            getGenres(){
+                const arrayId = [];
+                
 
+
+                store.genresFilmList.forEach(element => {
+                    
+                    arrayId.push(element.id)
+
+               });
+
+                for (let index = 0; index < this.genresIdFilm.length; index++) {
+                
+                   
+                   const id = this.genresIdFilm[index]
+                   
+                   const idFIlm = (element) => element == id;
+                   
+                   this.arrayGeneri.push(store.genresFilmList[arrayId.findIndex(idFIlm)].name)
+                   
+                }
+
+                
+            }
+
+        },
+        created(){
+            this.getGenres();
         }
     }
 
@@ -51,7 +79,8 @@
                 <font-awesome-icon :icon="getRating(votoFilm) > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
                 <font-awesome-icon :icon="getRating(votoFilm) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
-            <p :class="overviewFilm == `` ? `dNone` : ``">Overview: {{ overviewFilm.substring(0,250) }}...</p>
+            <p :class="overviewFilm == `` ? `dNone` : ``">Overview: {{ overviewFilm.substring(0,50) }}...</p>
+            <p>Genere: <span v-for="genere in arrayGeneri"> {{ genere }}</span></p>
         </div>
     </div>
 
@@ -59,7 +88,9 @@
 
 
 <style scoped>
-
+span{
+    margin: 0.25rem;
+}
 .sfondoNero{
     background-color: black;
 }
