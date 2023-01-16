@@ -36,7 +36,7 @@
 
 <template>
     
-    <div class="copertina" @mouseover="this.overIndex = 1" @mouseleave="this.overIndex = 0">
+    <div class="copertina" :class="urlCopertinaFilm == null ? `dNone` : ``" @mouseover="this.overIndex = 1" @mouseleave="this.overIndex = 0">
         <img :src="urlCopertina + urlDimensioneCopertina + urlCopertinaFilm" :alt=titoloFilm>
         
         <div class="info" :class="overIndex == 1 ? `sfondoNero dBlock` : `dNone`">
@@ -50,7 +50,7 @@
                 <font-awesome-icon :icon="getRating(votoFilm) > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
                 <font-awesome-icon :icon="getRating(votoFilm) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
-            <p>Overview: {{ overviewFilm.substring(0,250) }}...</p>
+            <p :class="overviewFilm == `` ? `dNone` : ``">Overview: {{ overviewFilm.substring(0,250) }}...</p>
         </div>
     </div>
 
@@ -93,10 +93,11 @@ p{
     padding: 0.5rem;
     position: relative;
 }
-   .bandiera{
-    width: 20%;
-   }
-   img{
+.bandiera{
+    width: 10%;
+}
+
+img{
     width: 100%;
 }
 </style>

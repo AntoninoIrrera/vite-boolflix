@@ -35,7 +35,7 @@ export default {
 
 <template>
 
-    <div class="copertina" @mouseover="this.overIndex = 1" @mouseleave="this.overIndex = 0">
+    <div class="copertina" :class="urlCopertinaTv == null ? `dNone` : ``" @mouseover="this.overIndex = 1" @mouseleave="this.overIndex = 0">
         <img :src="urlCopertina + urlDimensioneCopertina + urlCopertinaTv" :alt="titoloTv">
         <div class="info" :class="overIndex == 1 ? `sfondoNero dBlock` : `dNone`">
             <p>Titolo: {{ titoloTv }}</p>
@@ -48,7 +48,7 @@ export default {
                 <font-awesome-icon :icon="getRating(votoTv) > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
                 <font-awesome-icon :icon="getRating(votoTv) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
-            <p>Overview: {{ overviewTv.substring(0, 250)}} ...</p>
+            <p :class="overviewTv == `` ? `dNone` : ``">Overview: {{ overviewTv.substring(0, 250)}} ...</p>
         </div>
     </div>
 
@@ -85,15 +85,15 @@ p{
     height: 93%;
 }
 .copertina {
-        width: calc(100% / 7 - 1rem);
-        padding: 0.5rem;
-        position: relative;
-    }
+    width: calc(100% / 7 - 1rem);
+    padding: 0.5rem;
+    position: relative;
+}
 
-    img {
-      width: 100%;
-    }
-    .bandiera{
-        width: 20%;
-    }
+img {
+  width: 100%;
+}
+.bandiera{
+    width: 10%;
+}
 </style>
