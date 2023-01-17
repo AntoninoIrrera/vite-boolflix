@@ -17,6 +17,7 @@ export default{
       APIUrlTv: 'https://api.themoviedb.org/3/search/tv',
       APIUrlGeneriFilm: 'https://api.themoviedb.org/3/genre/movie/list',
       APIUrlGeneriTv: 'https://api.themoviedb.org/3/genre/tv/list',
+      APIUrlFlag: 'https://flagcdn.com/it/codes.json',
 
     }
   },
@@ -74,6 +75,27 @@ export default{
           store.genresTvList = response.data.genres
         })
 
+    },
+    getFlag(){
+      axios.get(this.APIUrlFlag, {
+        params: {
+          
+        }
+      })
+        .then((response) => {
+          console.log(response.data);
+
+          store.flagList = response.data;
+          
+
+          for (const key in store.flagList) {
+          
+            store.keyFlagList.push(key)
+          }
+
+        
+        })
+
     }
 
     
@@ -82,6 +104,7 @@ export default{
   created() {
     this.getGenresFilm();
     this.getGenrestv();
+    this.getFlag();
   }
 }
 

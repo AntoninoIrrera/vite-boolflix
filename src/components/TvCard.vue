@@ -71,13 +71,10 @@ export default {
         <div class="info" :class="overIndex == 1 ? `sfondoNero dBlock` : `dNone`">
             <p>Titolo: {{ titoloTv }}</p>
             <p :class="titoloTv == titoloOriginaleTv ? `dNone` : ``">Titolo originale: {{ titoloOriginaleTv }} </p>
-            <p>Lingua: <img class="bandiera" :src="urlImg + linguaTv + '.png'" :alt="'Bandiera ' + linguaTv"> </p>
+            <p v-if="store.keyFlagList.includes(linguaTv)">Lingua: <img class="bandiera" :src="urlImg + linguaTv + '.png'" :alt="'Bandiera ' + linguaTv"> </p>
+            <p v-else>Lingua: {{ linguaTv }}</p>
             <p>Voto:
-                <font-awesome-icon :icon="getRating(votoTv) > 0 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
-                <font-awesome-icon :icon="getRating(votoTv) > 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
-                <font-awesome-icon :icon="getRating(votoTv) > 2 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
-                <font-awesome-icon :icon="getRating(votoTv) > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
-                <font-awesome-icon :icon="getRating(votoTv) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
+                <font-awesome-icon v-for="n in 5" :icon="getRating(votoTv) > n - 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
             <p :class="overviewTv == `` ? `dNone` : ``">Overview: {{ overviewTv.substring(0, 50)}} ...</p>
             <ul>
@@ -144,5 +141,7 @@ img {
 }
 .bandiera{
     width: 10%;
+    vertical-align: middle;
+    margin-left: 0.25rem;
 }
 </style>

@@ -71,13 +71,10 @@
         <div class="info" :class="overIndex == 1 ? `sfondoNero dBlock` : `dNone`">
             <p>Titolo: {{ titoloFilm }}</p>
             <p :class="titoloFilm == titoloOriginaleFilm ? `dNone` : ``">Titolo originale: {{ titoloOriginaleFilm }}</p>
-            <p>Lingua:<img class="bandiera" :src="urlImg + linguaFilm + '.png'" :alt="'Bandiera ' + linguaFilm"></p>
+            <p v-if="store.keyFlagList.includes(linguaFilm)">Lingua:<img class="bandiera" :src="urlImg + linguaFilm + '.png'" :alt="'Bandiera ' + linguaFilm"></p>
+            <p v-else>Lingua: {{ linguaFilm }} </p>
             <p>Voto:
-                <font-awesome-icon :icon="getRating(votoFilm) > 0 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
-                <font-awesome-icon :icon="getRating(votoFilm) > 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
-                <font-awesome-icon :icon="getRating(votoFilm) > 2 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
-                <font-awesome-icon :icon="getRating(votoFilm) > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
-                <font-awesome-icon :icon="getRating(votoFilm) > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
+                <font-awesome-icon v-for="n in 5" :icon="getRating(votoFilm) > n - 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="rating" />
             </p>
             <p :class="overviewFilm == `` ? `dNone` : ``">Overview: {{ overviewFilm.substring(0,50) }}...</p>
             <ul>
@@ -141,6 +138,8 @@ p{
 }
 .bandiera{
     width: 10%;
+    vertical-align: middle;
+    margin-left: 0.25rem;
 }
 
 img{
